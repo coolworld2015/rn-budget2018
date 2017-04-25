@@ -1,0 +1,3 @@
+rootProject.name = 'rnBudget'
+
+include ':app'
