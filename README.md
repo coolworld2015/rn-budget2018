@@ -1,5 +1,5 @@
-# RN Base
-git clone https://github.com/coolworld2015/rn-base.git
+# RN Budget
+git clone https://github.com/coolworld2015/rn-budget.git
 -------------------------------------------------------------------------------------------------
 git config --global user.name "coolworld2015"
 -------------------------------------------------------------------------------------------------
@@ -26,8 +26,6 @@ RCTWebSocet -> Apple LLVM 8.0 Custom... -> other warning flags
 ANDROID for IOS
 -------------------------------------------------------------------------------------------------
 echo export "ANDROID_HOME=/Users/ed/Library/Android/sdk" >> ~/.bash_profile
--------------------------------------------------------------------------------------------------
-export ANDROID_HOME=/Users/ed/Library/Android/sdk
 -------------------------------------------------------------------------------------------------
 export PATH=$PATH:$ANDROID_HOME/bin
 -------------------------------------------------------------------------------------------------
