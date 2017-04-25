@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Image,
     TouchableHighlight,
-    ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput,
     Dimensions
 } from 'react-native';
@@ -18,8 +14,6 @@ import {
 class Login extends Component {
     constructor(props) {
         super(props);
-
-        var width = Dimensions.get('window').width;
 
         this.state = {
             showProgress: false,
@@ -36,12 +30,12 @@ class Login extends Component {
     }
 
     onLogin() {
-        if (appConfig.login.showProgress == true) {
+        if (appConfig.login.showProgress === true) {
             return;
         }
 
-        if (this.state.username == undefined ||
-            this.state.password == undefined) {
+        if (this.state.username === undefined || this.state.username === '' ||
+            this.state.password === undefined || this.state.password === '') {
             this.setState({
                 badCredentials: true
             });
@@ -89,6 +83,7 @@ class Login extends Component {
                 });
             })
             .finally(() => {
+                appConfig.login.showProgress = false;
                 this.setState({
                     showProgress: false
                 });
@@ -96,17 +91,11 @@ class Login extends Component {
     }
 
     render() {
-        var errorCtrl = <View />;
+        let errorCtrl;
 
-        if (!this.state.success && this.state.badCredentials) {
+        if (this.state.badCredentials) {
             errorCtrl = <Text style={styles.error}>
                 That username and password combination did not work
-            </Text>;
-        }
-
-        if (!this.state.success && this.state.unknownError) {
-            errorCtrl = <Text style={styles.error}>
-                We experienced an unexpected issue
             </Text>;
         }
 
@@ -114,7 +103,7 @@ class Login extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <Image style={styles.logo}
-                           source={require('../../../logo.jpg')}
+                           source={require('../../../img/logo.jpg')}
                     />
                     <View style={{
                         justifyContent: 'center',
@@ -176,7 +165,6 @@ class Login extends Component {
                         onPress={() => this.onLogin()}
                         style={{
                             height: 50,
-                            //width: this.state.width * .92,
                             backgroundColor: '#48BBEC',
                             borderColor: '#48BBEC',
                             alignSelf: 'stretch',
@@ -186,7 +174,9 @@ class Login extends Component {
                             alignItems: 'center',
                             borderRadius: 5
                         }}>
-                        <Text style={styles.buttonText}>{appConfig.language.enter}</Text>
+                        <Text style={styles.buttonText}>
+                            {appConfig.language.enter}
+                        </Text>
                     </TouchableHighlight>
 
                     {errorCtrl}
@@ -221,7 +211,6 @@ const styles = StyleSheet.create({
         margin: 20,
     },
     container: {
-        //backgroundColor: '#F5FCFF',
         paddingTop: 40,
         padding: 10,
         alignItems: 'center',
@@ -243,7 +232,6 @@ const styles = StyleSheet.create({
     footer: {
         fontSize: 30,
         marginTop: 10,
-        //marginBottom: 20
     },
     loginInput1: {
         height: 50,
@@ -257,7 +245,6 @@ const styles = StyleSheet.create({
     },
     loginInput: {
         height: 50,
-        //width: this.state.width,
         marginTop: 10,
         padding: 4,
         fontSize: 18,
