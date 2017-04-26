@@ -83,7 +83,7 @@ class Login extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: 'whitesmoke'}}>
                 <View style={styles.container}>
                     <Image style={styles.logo}
                            source={require('../../../img/logo.jpg')}
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 30,
-        marginTop: 10,
+        margin: 10,
         fontWeight: 'bold'
     },
     loginInput: {
@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'lightgray',
         borderRadius: 5,
-        color: 'black'
+        color: 'black',
+        backgroundColor: 'white'
     },
     button: {
         height: 50,

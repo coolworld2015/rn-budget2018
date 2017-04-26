@@ -102,7 +102,7 @@ class Login extends Component {
         }
 
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: 'whitesmoke'}}>
                 <View style={styles.container}>
                     <Image style={styles.logo}
                            source={require('../../../img/logo.jpg')}
