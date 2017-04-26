@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 30,
-        margin: 10,
+        marginTop: 10,
         fontWeight: 'bold'
     },
     loginInput: {
