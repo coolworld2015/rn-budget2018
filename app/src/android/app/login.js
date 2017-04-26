@@ -131,8 +131,7 @@ class Login extends Component {
                             borderColor: 'lightgray',
                             borderRadius: 5,
                             color: 'black',
-                            backgroundColor: 'white',
-                            fontWeight: 'bold'
+                            backgroundColor: 'white'
                         }}
                         value={this.state.username}
                         placeholder={appConfig.language.login}>
@@ -154,8 +153,7 @@ class Login extends Component {
                             borderColor: 'lightgray',
                             borderRadius: 5,
                             color: 'black',
-                            backgroundColor: 'white',
-                            fontWeight: 'bold'
+                            backgroundColor: 'white'
                         }}
                         value={this.state.password}
                         placeholder={appConfig.language.pass}

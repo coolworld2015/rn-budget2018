@@ -163,8 +163,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'lightgray',
         borderRadius: 5,
-        color: 'black',
-        fontWeight: 'bold'
+        color: 'black'
     },
     button: {
         height: 50,
