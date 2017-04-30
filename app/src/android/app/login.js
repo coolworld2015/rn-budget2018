@@ -19,8 +19,8 @@ class Login extends Component {
 
         this.state = {
             showProgress: false,
-            username: '1',
-            password: '1',
+            //username: '1',
+            //password: '1',
             bugANDROID: ''
         }
     }
@@ -104,17 +104,22 @@ class Login extends Component {
         return (
             <ScrollView style={{backgroundColor: 'whitesmoke'}} keyboardShouldPersistTaps={true}>
                 <View style={styles.container}>
-                    <Image style={styles.logo}
-                           source={require('../../../img/logo.jpg')}
-                    />
+				
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center',
+						marginTop: -10,
+						marginBottom: 10
                     }}>
                         <Text style={styles.heading}>
                             {appConfig.language.title}
                         </Text>
                     </View>
+									
+                    <Image style={styles.logo}
+                           source={require('../../../img/logo.jpg')}
+                    />
+					
                     <TextInput
                         underlineColorAndroid='rgba(0,0,0,0)'
                         onChangeText={(text) => this.setState({
@@ -168,7 +173,7 @@ class Login extends Component {
                             backgroundColor: '#48BBEC',
                             borderColor: '#48BBEC',
                             alignSelf: 'stretch',
-                            marginTop: 10,
+                            marginTop: 20,
                             margin: 5,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -221,6 +226,7 @@ const styles = StyleSheet.create({
         height: 150,
         paddingTop: 140,
         borderRadius: 20,
+		marginBottom: 10
     },
     heading: {
         fontSize: 30,
