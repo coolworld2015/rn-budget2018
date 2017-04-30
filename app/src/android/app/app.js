@@ -70,7 +70,7 @@ class App extends Component {
                 showProgress: false
             },
             rus: {
-                title: 'Budget',
+                title: 'RN-Budget',
                 user: 'Пользователь',
                 users: 'Пользователи',
                 firstday: 'Начало',
@@ -145,7 +145,7 @@ class App extends Component {
                 total: 'Итого'
             },
             eng: {
-                title: 'Budget',
+                title: 'RN-Budget',
                 user: 'User',
                 users: 'Users',
                 firstday: 'First day',
