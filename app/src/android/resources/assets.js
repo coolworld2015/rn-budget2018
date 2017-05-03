@@ -121,20 +121,11 @@ class Store extends Component {
 	
     renderRow(rowData) {
         return (
-            <TouchableHighlight
-                underlayColor='#ddd'
-            >
-				<View style={{
-						flex: 1,
-						flexDirection: 'column',
-						padding: 12,
-						borderColor: '#D7D7D7',
-						borderBottomWidth: 1,
-						backgroundColor: '#fff'
-					}}>              
-						<Text style={{backgroundColor: '#fff', color: 'black', fontWeight: 'bold'}}>
-							{rowData.name}: {((+rowData.quantity).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}
-						</Text>						
+            <TouchableHighlight>
+                <View style={styles.row}>
+                    <Text style={styles.rowText}>
+						{rowData.name}: {((+rowData.quantity).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}
+					</Text>						
 				</View>
             </TouchableHighlight>
         );
