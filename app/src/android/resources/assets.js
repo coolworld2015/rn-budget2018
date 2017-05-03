@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
+    TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput,
-    Alert
+	Image,
+	Dimensions,
+	RefreshControl
 } from 'react-native';
 
 class Store extends Component {
@@ -29,12 +28,17 @@ class Store extends Component {
             serverError: false,
             resultsCount: 0,
             recordsCount: 25,
-            positionY: 0
+            positionY: 0,
+			searchQuery: '',
+			refreshing: false
         };
     }
 	
 	componentDidMount() {
-		this.getItems();
+		this.setState({
+            width: Dimensions.get('window').width
+        });
+        this.getItems();
 	}
 	
     componentWillUpdate() {
@@ -51,6 +55,14 @@ class Store extends Component {
     }
 	
     getItems() {
+		this.setState({
+			serverError: false,
+            resultsCount: 0,
+            recordsCount: 15,
+            positionY: 0,
+			searchQuery: ''
+        });
+		
         fetch(appConfig.url + 'api/goods/get', {			
             method: 'get',
             headers: {
@@ -129,23 +141,8 @@ class Store extends Component {
     }
 
     refreshData(event) {
-		console.log(event.nativeEvent.contentOffset);
         if (this.state.showProgress == true) {
             return;
-        }
-
-        if (event.nativeEvent.contentOffset.y <= -150) {
-            this.setState({
-                showProgress: true,
-                resultsCount: 0,
-                recordsCount: 25,
-                positionY: 0,
-                searchQuery: ''
-            });
-
-            setTimeout(() => {
-                this.getUsers()
-            }, 300);
         }
 
         if (this.state.filteredItems == undefined) {
@@ -159,12 +156,12 @@ class Store extends Component {
 
         console.log(positionY + ' - ' + recordsCount + ' - ' + items.length);
 
-        if (event.nativeEvent.contentOffset.y >= positionY - 10) {
+        if (event.nativeEvent.contentOffset.y >= positionY) {
             console.log(items.length);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(items),
                 recordsCount: recordsCount + 10,
-                positionY: positionY + 500
+                positionY: positionY + 400
             });
         }
     }
@@ -203,7 +200,7 @@ class Store extends Component {
 	}
 	
     render() {
-        var errorCtrl, loader;
+        let errorCtrl, loader, image;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -212,102 +209,107 @@ class Store extends Component {
         }
 
         if (this.state.showProgress) {
-            loader = <View style={{
-                justifyContent: 'center',
-                height: 100
-            }}>
+            loader = <View style={styles.loader}>
                 <ActivityIndicator
                     size="large"
-                    animating={true}/>
+                    animating={true}
+                />
             </View>;
         }
 
-        return (
-            <View style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
-				<View style={{
-					flexDirection: 'row',
-					justifyContent: 'space-between',
-					backgroundColor: '#48BBEC',
-					borderWidth: 0,
-					borderColor: 'whitesmoke'
-				}}>
-					<View>
-						<TouchableHighlight
-							onPress={()=> this.refreshDataAndroid()}
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 16,
-								textAlign: 'center',
-								margin: 14,
-								fontWeight: 'bold',
-								color: 'white'
-							}}>
-								{appConfig.language.reload}
-							</Text>
-						</TouchableHighlight>	
-					</View>
-					<View>
-						<TouchableHighlight
-							onPress={()=> this.clearSearchQuery()}
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 20,
-								textAlign: 'center',
-								margin: 10,
-								marginRight: 50,
-								fontWeight: 'bold',
-								color: 'white'
-							}}>
-								{appConfig.language.assets}
-							</Text>
-						</TouchableHighlight>	
-					</View>						
-					<View>
-						<TouchableHighlight
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 16,
-								textAlign: 'center',
-								margin: 14,
-								fontWeight: 'bold',
-								color: 'darkblue'
-							}}>
-								 
-							</Text>
-						</TouchableHighlight>	
-					</View>
-				</View>
-				
-                <View style={{marginTop: 0}}>
-                    <TextInput style={{
-                        height: 45,
-						marginTop: 0,
-                        padding: 5,
-                        backgroundColor: 'white',
-                        borderWidth: 3,
-                        borderColor: 'lightgray',
-                        borderRadius: 0,
-                    }}
-						underlineColorAndroid='rgba(0,0,0,0)'
-						onChangeText={this.onChangeText.bind(this)}
-						value={this.state.searchQuery}
-						placeholder={appConfig.language.search}>
-                    </TextInput>    
+		if (this.state.searchQuery.length > 0) {
+			image = <Image
+				source={require('../../../img/cancel.png')}
+				style={{
+					height: 20,
+					width: 20,
+					marginTop: 10
+				}}
+			/>;
+		}
 
-					{errorCtrl}
-					
-				</View>
+        return (
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <View>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    {appConfig.language.assets}
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                </View>
+				
+                <View style={styles.iconForm}>
+					<View>
+						<TextInput
+							underlineColorAndroid='rgba(0,0,0,0)'
+							onChangeText={this.onChangeText.bind(this)}
+							style={{
+								height: 45,
+								padding: 5,
+								backgroundColor: 'white',
+								borderWidth: 3,
+								borderColor: 'white',
+								borderRadius: 0,
+								width: this.state.width * .90,
+							}}
+							value={this.state.searchQuery}
+							placeholder="Search here">
+						</TextInput>
+					</View>
+					<View style={{
+						height: 45,
+						backgroundColor: 'white',
+						borderWidth: 3,
+						borderColor: 'white',
+						marginLeft: -10,
+						paddingLeft: 5,
+						width: this.state.width * .10,
+					}}>			
+						<TouchableWithoutFeedback
+							onPress={() => this.clearSearchQuery()}
+						>			
+							<View>					
+								{image}
+							</View>
+						</TouchableWithoutFeedback>
+					</View>
+                </View>
+
+                {errorCtrl}
 
                 {loader}	
 				
-				<ScrollView
-					onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}>
+				<ScrollView onScroll={this.refreshData.bind(this)} scrollEventThrottle={16}
+					refreshControl={
+						<RefreshControl
+							enabled={true}
+							refreshing={this.state.refreshing}
+							onRefresh={this.refreshDataAndroid.bind(this)}
+						/>
+					}
+				>
 					<ListView
 						enableEmptySections={true}
-						style={{marginTop: 0, marginBottom: 0}}
 						dataSource={this.state.dataSource}
 						renderRow={this.renderRow.bind(this)}
 					/>
@@ -325,17 +327,60 @@ class Store extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
+    container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
+        backgroundColor: 'white'
     },
-    countHeader: {
+	iconForm: {
+		flexDirection: 'row',
+		borderColor: 'lightgray',
+		borderWidth: 3
+	},
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#48BBEC',
+        borderWidth: 0,
+        borderColor: 'whitesmoke'
+    },
+    textSmall: {
         fontSize: 16,
         textAlign: 'center',
-        padding: 15,
-        backgroundColor: '#F5FCFF',
+        margin: 14,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    textLarge: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        marginRight: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    textInput: {
+        height: 45,
+        marginTop: 0,
+        padding: 5,
+        backgroundColor: 'white',
+        borderWidth: 3,
+        borderColor: 'lightgray',
+        borderRadius: 0
+    },
+    row: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: 20,
+        alignItems: 'center',
+        borderColor: '#D7D7D7',
+        borderBottomWidth: 1,
+        backgroundColor: '#fff'
+    },
+    rowText: {
+        backgroundColor: '#fff',
+        color: 'black',
+        fontWeight: 'bold'
     },
     countFooter: {
         fontSize: 16,
@@ -343,51 +388,17 @@ const styles = StyleSheet.create({
         padding: 10,
         borderColor: '#D7D7D7',
         backgroundColor: '#48BBEC',
-		color: 'white',
-		fontWeight: 'bold'
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 20,
-    },
-    loginInput: {
-        height: 50,
-        marginTop: 10,
-        padding: 4,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'lightgray',
-        borderRadius: 0,
-        color: 'gray'
-    },
-    button: {
-        height: 50,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
-        alignSelf: 'stretch',
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 24
+        color: 'white',
+        fontWeight: 'bold'
     },
     loader: {
-        marginTop: 20
+        justifyContent: 'center',
+        height: 100
     },
     error: {
         color: 'red',
         paddingTop: 10,
         textAlign: 'center'
-    },
-    img: {
-        height: 95,
-        width: 75,
-        borderRadius: 20,
-        margin: 20
     }
 });
 
