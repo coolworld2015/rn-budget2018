@@ -241,7 +241,7 @@ class ResourceDetails extends Component {
 					</View>
 				</View>
 				
-				<ScrollView>
+				<ScrollView keyboardShouldPersistTaps={true}>
 					<View style={{
 						flex: 1,
 						padding: 10,

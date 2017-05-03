@@ -216,7 +216,7 @@ class EmployeeAdd extends Component {
 					</View>
 				</View>
 					
-				<ScrollView>
+				<ScrollView keyboardShouldPersistTaps={true}>
 					<View style={{backgroundColor: 'white'}}>
 						<View style={{
 							borderColor: 'lightgray',

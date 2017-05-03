@@ -361,7 +361,7 @@ class InputAdd extends Component {
 					</View>
 				</View>
 				
-				<ScrollView>
+				<ScrollView keyboardShouldPersistTaps={true}>
 					<View style={{
 						flex: 1,
 						padding: 10,
@@ -578,7 +578,9 @@ class InputAdd extends Component {
 						<TouchableHighlight
 							onPress={()=> this.addItem()}
 							style={styles.button}>
-							<Text style={styles.buttonText}>{appConfig.language.add}</Text>
+							<Text style={styles.buttonText}>
+								{appConfig.language.submit}
+							</Text>
 						</TouchableHighlight>
 						
 						{errorCtrl}
