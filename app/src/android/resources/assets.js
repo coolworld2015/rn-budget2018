@@ -264,7 +264,7 @@ class Store extends Component {
 								width: this.state.width * .90,
 							}}
 							value={this.state.searchQuery}
-							placeholder="Search here">
+							placeholder={appConfig.language.search}>
 						</TextInput>
 					</View>
 					<View style={{

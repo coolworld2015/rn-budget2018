@@ -22,12 +22,12 @@ class Other extends Component {
             dataSource: ds.cloneWithRows([
                 {name: appConfig.language.reports, id: 1},
                 {name: appConfig.language.projects, id: 10},
-                {name: appConfig.language.resources, id: 20},
                 {name: appConfig.language.departments, id: 30},
                 {name: appConfig.language.employees, id: 40},
-                {name: appConfig.language.config, id: 70},
+                {name: appConfig.language.resources, id: 20},
                 {name: appConfig.language.users, id: 50},
                 {name: appConfig.language.audit, id: 60},
+                {name: appConfig.language.config, id: 70},
                 {name: appConfig.language.logout, id: 80}
             ]),
             showProgress: true,

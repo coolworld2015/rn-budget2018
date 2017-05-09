@@ -162,7 +162,7 @@ class Outputs extends Component {
             this.setState({
                 showProgress: true,
                 resultsCount: 0,
-                recordsCount: 25,
+                recordsCount: 15,
                 positionY: 0,
                 searchQuery: ''
             });
@@ -181,7 +181,6 @@ class Outputs extends Component {
         var items = this.state.filteredItems.slice(0, recordsCount);
 
         if (event.nativeEvent.contentOffset.y >= positionY) {
-            console.log(items.length);
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(items),
                 recordsCount: recordsCount + 10,
@@ -198,7 +197,7 @@ class Outputs extends Component {
         var arr = [].concat(this.state.responseData);
         var items = arr.filter((el) => el.description.toLowerCase().indexOf(text.toLowerCase()) != -1);
         this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 25)),
+            dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 15)),
             resultsCount: items.length,
             filteredItems: items,
             searchQuery: text
@@ -278,7 +277,7 @@ class Outputs extends Component {
                         <TouchableWithoutFeedback onPress={() => this.addItem()}>
                             <View>
                                 <Text style={styles.textSmall}>
-                                    New
+                                    {appConfig.language.add}
                                 </Text>
                             </View>
                         </TouchableWithoutFeedback>
@@ -300,7 +299,7 @@ class Outputs extends Component {
 								width: this.state.width * .90,
 							}}
 							value={this.state.searchQuery}
-							placeholder="Search here">
+							placeholder={appConfig.language.search}>
 						</TextInput>
 					</View>
 					<View style={{
@@ -347,7 +346,6 @@ class Outputs extends Component {
 						{appConfig.language.records} {this.state.resultsCount} 
 					</Text>
 				</View>
-
             </View>
         )
     }
