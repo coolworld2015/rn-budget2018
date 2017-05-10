@@ -2,23 +2,19 @@
 
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableHighlight,
+	TouchableWithoutFeedback,
     ListView,
     ScrollView,
     ActivityIndicator,
-    TabBarIOS,
-    NavigatorIOS,
     TextInput,
     Switch,
 	Dimensions,
 	Picker,
-	DatePickerAndroid,
-	TouchableWithoutFeedback,
+	DatePickerAndroid
 } from 'react-native';
 
 class Search extends Component {
@@ -278,7 +274,7 @@ class Search extends Component {
 								fontWeight: 'bold',
 								color: 'white'
 							}}>
-							
+								Back
 							</Text>
 						</TouchableHighlight>	
 					</View>
@@ -291,6 +287,7 @@ class Search extends Component {
 								fontSize: 20,
 								textAlign: 'center',
 								margin: 10,
+								marginRight: 40,
 								//marginRight: 40,
 								fontWeight: 'bold',
 								color: 'white'

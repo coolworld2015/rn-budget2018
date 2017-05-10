@@ -91,7 +91,7 @@ class Config extends Component {
                                 fontWeight: 'bold',
                                 color: 'white'
                             }}>
-
+								Back
                             </Text>
                         </TouchableHighlight>
                     </View>
@@ -104,6 +104,7 @@ class Config extends Component {
                                 fontSize: 20,
                                 textAlign: 'center',
                                 margin: 10,
+								marginRight: 40,
                                 fontWeight: 'bold',
                                 color: 'white'
                             }}>
