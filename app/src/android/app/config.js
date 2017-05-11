@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+	TouchableWithoutFeedback,
     ScrollView,
     Switch,
     Dimensions,
@@ -79,53 +80,51 @@ class Config extends Component {
                     borderWidth: 0,
                     borderColor: 'whitesmoke'
                 }}>
-                    <View>
-                        <TouchableHighlight
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 16,
-                                textAlign: 'center',
-                                margin: 14,
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }}>
-								{appConfig.language.back}
-                            </Text>
-                        </TouchableHighlight>
-                    </View>
-                    <View>
-                        <TouchableHighlight
-                            onPress={() => this.goBack()}
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 20,
-                                textAlign: 'center',
-                                margin: 10,
-								marginRight: 40,
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }}>
+					<View>
+						<TouchableWithoutFeedback onPress={()=> this.goBack()}>
+							<View>
+								<Text style={{
+									fontSize: 16,
+									textAlign: 'center',
+									margin: 14,
+									fontWeight: 'bold',
+									color: 'white'
+								}}>
+									{appConfig.language.back}
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
+					</View>
+					<View>
+						<TouchableWithoutFeedback>
+							<View>
+								<Text style={{
+									fontSize: 20,
+									textAlign: 'center',
+									margin: 10,
+									marginRight: 40,
+									//marginRight: 40,
+									fontWeight: 'bold',
+									color: 'white'
+								}}>
                                 {appConfig.language.config}
-                            </Text>
-                        </TouchableHighlight>
-                    </View>
-                    <View>
-                        <TouchableHighlight
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 16,
-                                textAlign: 'center',
-                                margin: 14,
-                                fontWeight: 'bold'
-                            }}>
-
-                            </Text>
-                        </TouchableHighlight>
-                    </View>
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
+					</View>
+					<View>
+						<TouchableWithoutFeedback>
+							<View>
+								<Text style={{
+									fontSize: 16,
+									textAlign: 'center',
+									margin: 14,
+									fontWeight: 'bold'
+								}}>
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
+					</View>
                 </View>
 
                 <ScrollView>

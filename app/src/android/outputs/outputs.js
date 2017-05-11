@@ -128,25 +128,18 @@ class Outputs extends Component {
                 onPress={()=> this.showDetails(rowData)}
                 underlayColor='#ddd'
             >
-				<View style={{
-						flex: 1,
-						flexDirection: 'column',
-						padding: 12,
-						borderColor: '#D7D7D7',
-						borderBottomWidth: 1,
-						backgroundColor: '#fff'
-					}}>              
-						<Text style={{backgroundColor: '#fff', color: 'black', fontWeight: 'bold'}}>
-							{rowData.invoiceID} - {rowData.project} - {(rowData.date).split(' ')[0]}
-						</Text>						
-						
-						<Text style={{backgroundColor: '#fff', color: 'black', fontWeight: 'bold'}}>
-							{rowData.description}
-						</Text>						
-						
-						<Text style={{backgroundColor: '#fff', color: 'black', fontWeight: 'bold'}}>
-							{appConfig.language.total}: {((+rowData.total).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}
-						</Text>
+				<View style={styles.row}>              
+					<Text style={styles.rowText}>
+						{rowData.invoiceID} - {rowData.project} - {(rowData.date).split(' ')[0]}
+					</Text>						
+					
+					<Text style={styles.rowText}>
+						{rowData.description}
+					</Text>						
+					
+					<Text style={styles.rowText}>
+						{appConfig.language.total}: {((+rowData.total).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}
+					</Text>
 				</View>
             </TouchableHighlight>
         );
@@ -395,12 +388,11 @@ const styles = StyleSheet.create({
     },
     row: {
         flex: 1,
-        flexDirection: 'row',
-        padding: 20,
-        alignItems: 'center',
-        borderColor: '#D7D7D7',
-        borderBottomWidth: 1,
-        backgroundColor: '#fff'
+		flexDirection: 'column',
+		padding: 12,
+		borderColor: '#D7D7D7',
+		borderBottomWidth: 1,
+		backgroundColor: '#fff'
     },
     rowText: {
         backgroundColor: '#fff',

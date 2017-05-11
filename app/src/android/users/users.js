@@ -127,16 +127,8 @@ class Users extends Component {
                 onPress={()=> this.showDetails(rowData)}
                 underlayColor='#ddd'
             >
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    padding: 20,
-                    alignItems: 'center',
-                    borderColor: '#D7D7D7',
-                    borderBottomWidth: 1,
-                    backgroundColor: '#fff'
-                }}>
-                    <Text style={{backgroundColor: '#fff', color: 'black', fontWeight: 'bold'}}>
+                <View style={styles.row}>
+                    <Text style={styles.rowText}>
                         {rowData.name}
                     </Text>
                 </View>
@@ -391,13 +383,13 @@ const styles = StyleSheet.create({
         borderRadius: 0
     },
     row: {
-        flex: 1,
-        flexDirection: 'row',
-        padding: 20,
-        alignItems: 'center',
-        borderColor: '#D7D7D7',
-        borderBottomWidth: 1,
-        backgroundColor: '#fff'
+		flex: 1,
+		flexDirection: 'row',
+		padding: 20,
+		alignItems: 'center',
+		borderColor: '#D7D7D7',
+		borderBottomWidth: 1,
+		backgroundColor: '#fff'
     },
     rowText: {
         backgroundColor: '#fff',

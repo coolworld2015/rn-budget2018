@@ -263,52 +263,49 @@ class Search extends Component {
 					borderColor: 'whitesmoke'
 				}}>
 					<View>
-						<TouchableHighlight
-							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 16,
-								textAlign: 'center',
-								margin: 14,
-								fontWeight: 'bold',
-								color: 'white'
-							}}>
-								{appConfig.language.back}
-							</Text>
-						</TouchableHighlight>	
+						<TouchableWithoutFeedback onPress={()=> this.goBack()}>
+							<View>
+								<Text style={{
+									fontSize: 16,
+									textAlign: 'center',
+									margin: 14,
+									fontWeight: 'bold',
+									color: 'white'
+								}}>
+									{appConfig.language.back}
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
 					</View>
 					<View>
-						<TouchableHighlight
-							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 20,
-								textAlign: 'center',
-								margin: 10,
-								marginRight: 40,
-								//marginRight: 40,
-								fontWeight: 'bold',
-								color: 'white'
-							}}>
-								{appConfig.language.reports} 
-							</Text>
-						</TouchableHighlight>	
+						<TouchableWithoutFeedback>
+							<View>
+								<Text style={{
+									fontSize: 20,
+									textAlign: 'center',
+									margin: 10,
+									marginRight: 40,
+									//marginRight: 40,
+									fontWeight: 'bold',
+									color: 'white'
+								}}>
+									{appConfig.language.reports} 
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
 					</View>						
 					<View>
-						<TouchableHighlight
-							underlayColor='#ddd'
-						>
-							<Text style={{
-								fontSize: 16,
-								textAlign: 'center',
-								margin: 14,
-								fontWeight: 'bold'
-							}}>
-								 
-							</Text>
-						</TouchableHighlight>	
+						<TouchableWithoutFeedback>
+							<View>
+								<Text style={{
+									fontSize: 16,
+									textAlign: 'center',
+									margin: 14,
+									fontWeight: 'bold'
+								}}>
+								</Text>
+							</View>
+						</TouchableWithoutFeedback>	
 					</View>
 				</View>
 				
