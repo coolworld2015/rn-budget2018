@@ -34,7 +34,9 @@ class SearchResults extends Component {
 		
 		this.state = {
 			dataSource1: ds.cloneWithRows([]),
-			dataSource2: ds.cloneWithRows([])
+			dataSource2: ds.cloneWithRows([]),
+			resultsCount1: 0,
+			resultsCount2: 0
 		}	
 		
 		if (props.data) {
@@ -53,11 +55,11 @@ class SearchResults extends Component {
 				showProgress: true,
 				
 				resultsCount1: 0,
-				recordsCount1: 25,
+				recordsCount1: 15,
 				positionY1: 0,
 								
 				resultsCount2: 0,
-				recordsCount2: 25,
+				recordsCount2: 15,
 				positionY2: 0,
 				
 				inputsTotal: 0,
@@ -117,7 +119,7 @@ class SearchResults extends Component {
                 this.setState({
 				    dataSource1: this.state.dataSource1.cloneWithRows(items.slice(0, 25)),
                     resultsCount1: items.length,
-					recordsCount1: 25,
+					recordsCount1: 15,
                     responseData1: items,
                     filteredItems1: items
                 });
@@ -171,7 +173,7 @@ class SearchResults extends Component {
                 this.setState({
 				    dataSource2: this.state.dataSource2.cloneWithRows(items.slice(0, 25)),
                     resultsCount2: items.length,
-					recordsCount2: 25,
+					recordsCount2: 15,
                     responseData2: items,
                     filteredItems2: items
                 });
@@ -246,11 +248,11 @@ class SearchResults extends Component {
         positionY = this.state.positionY1;
         items = this.state.filteredItems1.slice(0, recordsCount);
 
-        if (event.nativeEvent.contentOffset.y >= positionY - 10) {
+        if (event.nativeEvent.contentOffset.y >= positionY) {
             this.setState({
                 dataSource1: this.state.dataSource1.cloneWithRows(items),
                 recordsCount1: recordsCount + 10,
-                positionY1: positionY + 500
+                positionY1: positionY + 400
             });
         }
     }
@@ -265,11 +267,11 @@ class SearchResults extends Component {
         positionY = this.state.positionY2;
         items = this.state.filteredItems2.slice(0, recordsCount);
 
-        if (event.nativeEvent.contentOffset.y >= positionY - 10) {
+        if (event.nativeEvent.contentOffset.y >= positionY) {
             this.setState({
                 dataSource2: this.state.dataSource2.cloneWithRows(items),
                 recordsCount2: recordsCount + 10,
-                positionY2: positionY + 500
+                positionY2: positionY + 400
             });
         }
     }
@@ -308,7 +310,7 @@ class SearchResults extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -395,7 +397,7 @@ class SearchResults extends Component {
 					}}>
 					<View style={{marginBottom: 0}}>
 						<Text style={styles.countFooter1}>
-							{appConfig.language.outputs}: {this.state.resultsCount2}
+							{appConfig.language.outputs}: {this.state.resultsCount2.toString()}
 						</Text>
 						<Text style={styles.countFooter1}>
 							{((+this.state.outputsTotal).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}
@@ -411,7 +413,7 @@ class SearchResults extends Component {
 					</View>					
 					<View style={{marginBottom: 0}}>
 						<Text style={styles.countFooter3}>
-							{appConfig.language.inputs}: {this.state.resultsCount1}
+							{appConfig.language.inputs}: {this.state.resultsCount1.toString()}
 						</Text>						
 						<Text style={styles.countFooter3}>
 							{((+this.state.inputsTotal).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}

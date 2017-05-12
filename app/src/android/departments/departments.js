@@ -249,13 +249,16 @@ class Departments extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.goBack()}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
 									{appConfig.language.back}
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                     <View>
                         <TouchableWithoutFeedback>
@@ -267,13 +270,16 @@ class Departments extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.addItem()}>
+						<TouchableHighlight
+							onPress={()=> this.addItem()}
+							underlayColor='#48BBEC'
+						>
                             <View>
                                 <Text style={styles.textSmall}>
                                     {appConfig.language.add}
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 				
@@ -336,7 +342,7 @@ class Departments extends Component {
 				
 				<View>
 					<Text style={styles.countFooter}>
-						{appConfig.language.records} {this.state.resultsCount} 
+						{appConfig.language.records} {this.state.resultsCount.toString()} 
 					</Text>
 				</View>
             </View>

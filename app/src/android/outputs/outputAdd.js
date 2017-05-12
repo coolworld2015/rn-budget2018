@@ -316,7 +316,7 @@ class OutputAdd extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={{
 								fontSize: 16,

@@ -263,7 +263,10 @@ class Search extends Component {
 					borderColor: 'whitesmoke'
 				}}>
 					<View>
-						<TouchableWithoutFeedback onPress={()=> this.goBack()}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
 							<View>
 								<Text style={{
 									fontSize: 16,
@@ -275,7 +278,7 @@ class Search extends Component {
 									{appConfig.language.back}
 								</Text>
 							</View>
-						</TouchableWithoutFeedback>	
+						</TouchableHighlight>	
 					</View>
 					<View>
 						<TouchableWithoutFeedback>

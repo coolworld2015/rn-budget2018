@@ -146,7 +146,7 @@ class SearchDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={styles.textSmall}>
 								{appConfig.language.back}

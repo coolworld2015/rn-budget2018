@@ -223,7 +223,7 @@ class Store extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View>
-                        <TouchableWithoutFeedback>
+						<TouchableWithoutFeedback>
                             <View>
                                 <Text style={styles.textSmall}>
                                 </Text>
@@ -308,7 +308,7 @@ class Store extends Component {
 				
 				<View style={{marginBottom: 0}}>
 					<Text style={styles.countFooter}>
-						{appConfig.language.records} {this.state.resultsCount} 
+						{appConfig.language.records} {this.state.resultsCount.toString()} 
 					</Text>
 				</View>
 

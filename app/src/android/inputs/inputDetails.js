@@ -144,7 +144,7 @@ class InputDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={styles.textSmall}>
 								{appConfig.language.back}
@@ -163,7 +163,7 @@ class InputDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.deleteItemDialog()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={styles.textSmall}>
 								{appConfig.language.delete}

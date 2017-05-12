@@ -81,19 +81,16 @@ class Config extends Component {
                     borderColor: 'whitesmoke'
                 }}>
 					<View>
-						<TouchableWithoutFeedback onPress={()=> this.goBack()}>
-							<View>
-								<Text style={{
-									fontSize: 16,
-									textAlign: 'center',
-									margin: 14,
-									fontWeight: 'bold',
-									color: 'white'
-								}}>
+						<TouchableHighlight
+							onPress={()=> this.goBack()}
+							underlayColor='#48BBEC'
+						>
+                            <View>
+                                <Text style={styles.textSmall}>
 									{appConfig.language.back}
-								</Text>
-							</View>
-						</TouchableWithoutFeedback>	
+                                </Text>
+                            </View>
+                        </TouchableHighlight>
 					</View>
 					<View>
 						<TouchableWithoutFeedback>
@@ -103,11 +100,10 @@ class Config extends Component {
 									textAlign: 'center',
 									margin: 10,
 									marginRight: 40,
-									//marginRight: 40,
 									fontWeight: 'bold',
 									color: 'white'
 								}}>
-                                {appConfig.language.config}
+									{appConfig.language.config}
 								</Text>
 							</View>
 						</TouchableWithoutFeedback>	
@@ -189,6 +185,13 @@ class Config extends Component {
 }
 
 const styles = StyleSheet.create({
+	textSmall: {
+        fontSize: 16,
+        textAlign: 'center',
+        margin: 14,
+        fontWeight: 'bold',
+        color: 'white'
+    },
     button: {
         height: 50,
         backgroundColor: '#48BBEC',

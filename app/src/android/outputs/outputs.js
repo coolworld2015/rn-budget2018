@@ -267,13 +267,16 @@ class Outputs extends Component {
                         </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableWithoutFeedback onPress={() => this.addItem()}>
-                            <View>
+						<TouchableHighlight 
+							onPress={() => this.addItem()}
+							underlayColor='#48BBEC'
+						>    
+							<View>
                                 <Text style={styles.textSmall}>
                                     {appConfig.language.add}
                                 </Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableHighlight>
                     </View>
                 </View>
 				
@@ -336,7 +339,7 @@ class Outputs extends Component {
 				
 				<View>
 					<Text style={styles.countFooter}>
-						{appConfig.language.records} {this.state.resultsCount} 
+						{appConfig.language.records} {this.state.resultsCount.toString()} 
 					</Text>
 				</View>
             </View>

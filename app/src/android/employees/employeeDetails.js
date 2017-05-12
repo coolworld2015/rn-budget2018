@@ -199,7 +199,7 @@ class EmployeeDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -210,7 +210,7 @@ class EmployeeDetails extends Component {
 							}}>
 								{appConfig.language.back}
 							</Text>
-						</TouchableHighlight>	
+						</TouchableHighlight>
 					</View>
 					<View style={{flex:1,flexDirection:'column', flexWrap:'wrap'}}>
 						<TouchableHighlight
@@ -230,7 +230,7 @@ class EmployeeDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.deleteItemDialog()}
-							underlayColor='#ddd'
+							underlayColor='#48BBEC'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -241,7 +241,7 @@ class EmployeeDetails extends Component {
 							}}>
 								{appConfig.language.delete}
 							</Text>
-						</TouchableHighlight>	
+						</TouchableHighlight>
 					</View>
 				</View>
 				
