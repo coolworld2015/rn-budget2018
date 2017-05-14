@@ -363,6 +363,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         padding: 20,
+        paddingLeft: 12,
         alignItems: 'center',
         borderColor: '#D7D7D7',
         borderBottomWidth: 1,
