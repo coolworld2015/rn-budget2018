@@ -301,6 +301,7 @@ class OutputAdd extends Component {
 			loader = <ActivityIndicator
 				animating={true}
 				size="large"
+				style={{marginTop: 10}}
 			/>
 		}
 		
@@ -685,6 +686,7 @@ const styles = StyleSheet.create({
     error: {
         color: 'red',
         paddingTop: 20,
+		marginBottom: -10,
         textAlign: 'center'
     },
     img: {
