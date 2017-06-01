@@ -46,6 +46,7 @@ class Login extends Component {
 
         this.setState({
             showProgress: true,
+			badCredentials: false,
             bugANDROID: ' '
         });
 
