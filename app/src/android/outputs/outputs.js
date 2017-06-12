@@ -76,7 +76,7 @@ class Outputs extends Component {
         })
             .then((response)=> response.json())
             .then((responseData)=> {
-
+				appConfig.outputs.outputsCount = (responseData.length + 1).toString();
                 this.setState({
 				    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
@@ -116,7 +116,6 @@ class Outputs extends Component {
 	
     addItem() {
 		appConfig.outputs.showProgress = false;
-		appConfig.outputs.outputsCount = (this.state.resultsCount + 1).toString();
 		this.props.navigator.push({
 			index: 2
 		});

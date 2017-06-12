@@ -76,7 +76,7 @@ class Inputs extends Component {
         })
             .then((response)=> response.json())
             .then((responseData)=> {
-
+				appConfig.inputs.inputsCount = (responseData.length + 1).toString();
                 this.setState({
 				    dataSource: this.state.dataSource.cloneWithRows(responseData.sort(this.sort).slice(0, 15)),
                     resultsCount: responseData.length,
@@ -116,7 +116,6 @@ class Inputs extends Component {
 	
     addItem() {
 		appConfig.inputs.showProgress = false;
-		appConfig.inputs.inputsCount = (this.state.resultsCount + 1).toString();
 		this.props.navigator.push({
 			index: 2
 		});
