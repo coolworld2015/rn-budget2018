@@ -171,20 +171,28 @@ class EmployeeDetails extends Component {
 	}
 	
     render() {
-        var errorCtrl = <View />;
+        let errorCtrl, validCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
                 Something went wrong.
             </Text>;
         }
-
-        var validCtrl = <View />;
-
+		
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
                 Value required - please provide.
             </Text>;
+        }
+		
+        if (this.state.showProgress) {
+            loader = <View style={styles.loader}>
+                <ActivityIndicator
+                    size="large"
+					color="darkblue"
+                    animating={true}
+                />
+            </View>;
         }
 
         return (
@@ -192,14 +200,14 @@ class EmployeeDetails extends Component {
 				<View style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-					backgroundColor: '#48BBEC',
+					backgroundColor: 'darkblue',
 					borderWidth: 0,
 					borderColor: 'whitesmoke'
 				}}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -230,7 +238,7 @@ class EmployeeDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.deleteItemDialog()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -246,6 +254,9 @@ class EmployeeDetails extends Component {
 				</View>
 				
 				<ScrollView keyboardShouldPersistTaps={true}>
+					{errorCtrl}							
+					{loader}
+					
 					<View style={{
 						flex: 1,
 						padding: 10,
@@ -377,7 +388,7 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: 'darkblue',
         borderRadius: 5,
         color: 'black'
     },    
@@ -387,7 +398,7 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: 'darkblue',
         borderRadius: 5,
         color: 'black',
 		fontWeight: 'bold'
@@ -398,13 +409,14 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: 'darkblue',
         borderRadius: 5,
         color: 'black'
     },	
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,

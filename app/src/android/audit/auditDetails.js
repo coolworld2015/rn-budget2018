@@ -54,14 +54,14 @@ class AuditDetails extends Component {
 				<View style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-					backgroundColor: '#48BBEC',
+					backgroundColor: 'darkblue',
 					borderWidth: 0,
 					borderColor: 'whitesmoke'
 				}}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: 'darkblue',
         borderRadius: 5,
         color: 'black'
     },
@@ -231,13 +231,14 @@ const styles = StyleSheet.create({
         padding: 4,
         fontSize: 18,
         borderWidth: 1,
-        borderColor: 'lightgray',
+        borderColor: 'darkblue',
         borderRadius: 5,
         color: 'black'
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,

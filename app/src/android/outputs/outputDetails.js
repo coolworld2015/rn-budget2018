@@ -140,13 +140,31 @@ class OutputDetails extends Component {
 	}
 	
     render() {	
+        let errorCtrl, loader, image;
+
+        if (this.state.serverError) {
+            errorCtrl = <Text style={styles.error}>
+                Something went wrong.
+            </Text>;
+        }
+
+        if (this.state.showProgress) {
+            loader = <View style={styles.loader}>
+                <ActivityIndicator
+                    size="large"
+					color="darkblue"
+                    animating={true}
+                />
+            </View>;
+        }
+		
         return (
             <View style={styles.container}>
 				<View style={styles.header}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={styles.textSmall}>
 								{appConfig.language.back}
@@ -165,7 +183,7 @@ class OutputDetails extends Component {
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.deleteItemDialog()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={styles.textSmall}>
 								{appConfig.language.delete}
@@ -175,6 +193,10 @@ class OutputDetails extends Component {
 				</View>
 										
 				<ScrollView>
+					{errorCtrl}
+						
+					{loader}
+					
 					<View style={styles.form}>								
 						<View style={styles.itemBlock}>
 							<Text style={styles.itemTextBold}>
@@ -296,7 +318,8 @@ const styles = StyleSheet.create({
 	header: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		backgroundColor: '#48BBEC',
+		//backgroundColor: '#48BBEC',
+		backgroundColor: 'darkblue',
 		borderWidth: 0,
 		borderColor: 'whitesmoke'
 	},	
@@ -346,7 +369,8 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,
@@ -358,7 +382,17 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 20,
 		fontWeight: 'bold'
-    }
+    },
+    loader: {
+        justifyContent: 'center',
+		marginTop: 10,
+        height: 100
+    },
+    error: {
+        color: 'red',
+        paddingTop: 10,
+        textAlign: 'center'
+    }	
 });
 
 export default OutputDetails;

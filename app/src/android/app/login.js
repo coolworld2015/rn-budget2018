@@ -19,8 +19,8 @@ class Login extends Component {
 
         this.state = {
             showProgress: false,
-            username: '2',
-            password: '2',
+            //username: '2',
+            //password: '2',
             bugANDROID: ''
         }
     }

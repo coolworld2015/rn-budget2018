@@ -146,7 +146,8 @@ class Config extends Component {
                                 margin: 10,
                             }}>
                                 <Text style={{
-                                    fontSize: 18
+                                    fontSize: 18,
+									color: 'darkblue'
                                 }}>
                                     {this.state.textSwitchBase}
                                 </Text>
