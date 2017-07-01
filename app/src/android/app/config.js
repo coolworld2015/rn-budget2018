@@ -76,14 +76,14 @@ class Config extends Component {
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    backgroundColor: '#48BBEC',
+                    backgroundColor: 'darkblue',
                     borderWidth: 0,
                     borderColor: 'whitesmoke'
                 }}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
                             <View>
                                 <Text style={styles.textSmall}>
@@ -134,7 +134,7 @@ class Config extends Component {
                         <View style={{
                             height: 50,
                             borderWidth: 1,
-                            borderColor: '#48BBEC',
+                            borderColor: 'darkblue',
                             flex: 1,
                             flexDirection: 'row',
                             justifyContent: 'space-between',
@@ -194,7 +194,8 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,

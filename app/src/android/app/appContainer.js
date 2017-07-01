@@ -59,7 +59,11 @@ class AppContainer extends Component {
     render() {
         return (
             <ScrollableTabView
-                renderTabBar={() => <DefaultTabBar backgroundColor='white'/>}
+                renderTabBar={() => <DefaultTabBar 
+					activeTextColor='darkblue' 
+					inactiveTextColor='darkblue' 
+ 					underlineStyle={{backgroundColor: 'darkblue'}}
+					backgroundColor='white'/>}
             >
                 <AssetsTab tabLabel={appConfig.language.assets}/>
                 <OutputsTab tabLabel={appConfig.language.outputs}/>

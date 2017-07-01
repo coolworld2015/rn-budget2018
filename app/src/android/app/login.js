@@ -19,8 +19,8 @@ class Login extends Component {
 
         this.state = {
             showProgress: false,
-            //username: '1',
-            //password: '1',
+            username: '2',
+            password: '2',
             bugANDROID: ''
         }
     }
@@ -106,12 +106,7 @@ class Login extends Component {
             <ScrollView style={{backgroundColor: 'whitesmoke'}} keyboardShouldPersistTaps={true}>
                 <View style={styles.container}>
 				
-                    <View style={{
-                        justifyContent: 'center',
-                        alignItems: 'center',
-						marginTop: -10,
-						marginBottom: 10
-                    }}>
+                    <View style={styles.headerContainer}>
                         <Text style={styles.heading}>
                             {appConfig.language.title}
                         </Text>
@@ -169,17 +164,7 @@ class Login extends Component {
                     <TouchableHighlight
                         //onPress={this.onLoginPressed.bind(this)}
                         onPress={() => this.onLogin()}
-                        style={{
-                            height: 50,
-                            backgroundColor: '#48BBEC',
-                            borderColor: '#48BBEC',
-                            alignSelf: 'stretch',
-                            marginTop: 20,
-                            margin: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 5
-                        }}>
+                        style={styles.button}>
                         <Text style={styles.buttonText}>
                             {appConfig.language.enter}
                         </Text>
@@ -190,6 +175,7 @@ class Login extends Component {
                     <ActivityIndicator
                         animating={this.state.showProgress}
                         size="large"
+						color="darkblue"
                         style={styles.loader}
                     />
 
@@ -229,10 +215,16 @@ const styles = StyleSheet.create({
         borderRadius: 20,
 		marginBottom: 10
     },
+	headerContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+		marginBottom: 10,
+		marginTop: -10
+    },
     heading: {
         fontSize: 30,
         marginTop: 10,
-        color: 'black',
+        color: 'darkblue',
         fontWeight: 'bold',
         textAlign: 'center'
     },
@@ -263,7 +255,8 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         marginTop: 10,

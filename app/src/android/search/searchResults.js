@@ -305,12 +305,12 @@ class SearchResults extends Component {
 				<View style={{
 						flexDirection: 'row',
 						justifyContent: 'space-between',
-						backgroundColor: '#48BBEC'
+						backgroundColor: 'darkblue'
 					}}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<Text style={{
 								fontSize: 16,
@@ -393,7 +393,7 @@ class SearchResults extends Component {
 				<View style={{
 						flexDirection: 'row',
 						justifyContent: 'space-between',
-						backgroundColor: '#48BBEC'
+						backgroundColor: 'darkblue'
 					}}>
 					<View style={{marginBottom: 0}}>
 						<Text style={styles.countFooter1}>

@@ -6,6 +6,7 @@ import {
     Text,
     View,
     TouchableHighlight,
+	TouchableWithoutFeedback,
     ListView,
     ScrollView
 } from 'react-native';
@@ -130,59 +131,32 @@ class Other extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
-                <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    backgroundColor: '#48BBEC',
-                    borderWidth: 0,
-                    borderColor: 'whitesmoke'
-                }}>
+            <View style={styles.container}>
+                <View style={styles.header}>
                     <View>
-                        <TouchableHighlight
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 16,
-                                textAlign: 'center',
-                                margin: 14,
-                                fontWeight: 'bold',
-                                color: 'darkblue'
-                            }}>
-
-                            </Text>
-                        </TouchableHighlight>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 20,
-                                textAlign: 'center',
-                                margin: 10,
-                                marginRight: 20,
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }}>
-                                {appConfig.language.other}
-                            </Text>
-                        </TouchableHighlight>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textLarge}>
+                                    {appConfig.language.other}
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
                     <View>
-                        <TouchableHighlight
-                            underlayColor='#ddd'
-                        >
-                            <Text style={{
-                                fontSize: 16,
-                                textAlign: 'center',
-                                margin: 14,
-                                fontWeight: 'bold',
-                                color: 'darkblue'
-                            }}>
-
-                            </Text>
-                        </TouchableHighlight>
+                        <TouchableWithoutFeedback>
+                            <View>
+                                <Text style={styles.textSmall}>
+                                </Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
                 </View>
 
@@ -207,70 +181,45 @@ class Other extends Component {
 }
 
 const styles = StyleSheet.create({
-    AppContainer: {
+    container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'gray',
+        backgroundColor: 'white'
     },
-    countHeader: {
-        fontSize: 16,
-        textAlign: 'center',
-        padding: 15,
-        backgroundColor: '#F5FCFF',
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
+        borderWidth: 0,
+        borderColor: 'whitesmoke'
     },
     countFooter: {
         fontSize: 16,
         textAlign: 'center',
         padding: 10,
         borderColor: '#D7D7D7',
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         color: 'white',
         fontWeight: 'bold'
     },
-    welcome: {
-        fontSize: 20,
+	textSmall: {
+        fontSize: 16,
         textAlign: 'center',
         margin: 20,
+        fontWeight: 'bold',
+        color: 'white'
     },
-    loginInput: {
-        height: 50,
+    textLarge: {
+        fontSize: 20,
+        textAlign: 'center',
         marginTop: 10,
-        padding: 4,
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'lightgray',
-        borderRadius: 0,
-        color: 'gray'
-    },
-    button: {
-        height: 50,
-        backgroundColor: '#48BBEC',
-        borderColor: '#48BBEC',
-        alignSelf: 'stretch',
-        marginTop: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 24
-    },
-    loader: {
-        marginTop: 20
-    },
-    error: {
-        color: 'red',
-        paddingTop: 10,
-        textAlign: 'center'
-    },
-    img: {
-        height: 95,
-        width: 75,
-        borderRadius: 20,
-        margin: 20
-    }
+        marginBottom: 15,
+        paddingLeft: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    }	
 });
 
 export default Other;

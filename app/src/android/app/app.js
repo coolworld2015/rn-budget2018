@@ -256,6 +256,7 @@ class App extends Component {
             return <View style={styles.loader}>
                 <ActivityIndicator
                     animating={true}
+					color="darkblue"
                     size="large"
                 />
             </View>;

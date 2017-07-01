@@ -228,7 +228,7 @@ class Search extends Component {
 	};
 
     render() {
-        var errorCtrl = <View />;
+        let errorCtrl, validCtrl, loader;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -236,19 +236,16 @@ class Search extends Component {
             </Text>;
         }
 
-        var validCtrl = <View />;
-
         if (this.state.invalidValue) {
             validCtrl = <Text style={styles.error}>
                 Value required - please provide.
             </Text>;
         }
-		
-		var loader = <View />;
 
         if (this.state.showProgress) {
 			loader = <ActivityIndicator
 				animating={true}
+				color="darkblue"
 				size="large"
 			/>
 		}
@@ -258,14 +255,14 @@ class Search extends Component {
 				<View style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-					backgroundColor: '#48BBEC',
+					backgroundColor: 'darkblue',
 					borderWidth: 0,
 					borderColor: 'whitesmoke'
 				}}>
 					<View>
 						<TouchableHighlight
 							onPress={()=> this.goBack()}
-							underlayColor='#48BBEC'
+							underlayColor='darkblue'
 						>
 							<View>
 								<Text style={{
@@ -319,7 +316,7 @@ class Search extends Component {
 						{loader}
 						
 						<View style={{
-							borderColor: 'lightgray',
+							borderColor: 'darkblue',
 							borderWidth: 5,
 							marginTop: 10,
 							margin: 10,
@@ -350,7 +347,7 @@ class Search extends Component {
 					
 					<View style={{backgroundColor: 'white'}}>
 						<View style={{
-							borderColor: 'lightgray',
+							borderColor: 'darkblue',
 							borderWidth: 5,
 							marginTop: 10,
 							margin: 10,
@@ -381,7 +378,7 @@ class Search extends Component {
 					
 					<View style={{backgroundColor: 'white'}}>
 						<View style={{
-							borderColor: 'lightgray',
+							borderColor: 'darkblue',
 							borderWidth: 5,
 							marginTop: 10,
 							margin: 10,
@@ -499,7 +496,8 @@ const styles = StyleSheet.create({
     },
 	button: {
         height: 50,
-        backgroundColor: '#48BBEC',
+        //backgroundColor: '#48BBEC',
+        backgroundColor: 'darkblue',
         borderColor: '#48BBEC',
         alignSelf: 'stretch',
         margin: 10,
@@ -510,7 +508,8 @@ const styles = StyleSheet.create({
     button1: {
         height: 50,
         borderWidth: 1,
-        borderColor: '#48BBEC',
+        //borderColor: '#48BBEC',
+        borderColor: 'darkblue',
         alignSelf: 'stretch',
         margin: 10,
         marginBottom: 0,
