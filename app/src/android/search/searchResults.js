@@ -296,6 +296,7 @@ class SearchResults extends Component {
             }}>
                 <ActivityIndicator
                     size="large"
+					color="darkblue"
                     animating={true}/>
             </View>;
         }

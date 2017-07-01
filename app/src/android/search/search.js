@@ -525,7 +525,7 @@ const styles = StyleSheet.create({
 	buttonText1: {
         fontSize: 20,
 		fontWeight: 'bold',
-		color: 'gray',
+		color: 'darkblue',
 		textAlign: 'left',
 		marginLeft: 5,
     },
