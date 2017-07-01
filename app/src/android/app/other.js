@@ -207,7 +207,8 @@ const styles = StyleSheet.create({
 	textSmall: {
         fontSize: 16,
         textAlign: 'center',
-        margin: 20,
+        margin: 14,
+        marginBottom: 10,
         fontWeight: 'bold',
         color: 'white'
     },
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         marginTop: 10,
-        marginBottom: 15,
+        marginBottom: 13,
         marginRight: 20,
         fontWeight: 'bold',
         color: 'white'
