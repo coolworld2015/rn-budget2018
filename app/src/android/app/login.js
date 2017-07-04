@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 30,
         marginTop: 10,
-        color: 'darkblue',
+        color: 'navy',
         fontWeight: 'bold',
         textAlign: 'center'
     },
