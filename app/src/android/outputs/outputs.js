@@ -32,7 +32,8 @@ class Outputs extends Component {
             recordsCount: 15,
             positionY: 0,
 			searchQuery: '',
-			refreshing: false
+			refreshing: false,
+			total: 0
         };
     }
 	
@@ -188,11 +189,15 @@ class Outputs extends Component {
 
         var arr = [].concat(this.state.responseData);
         var items = arr.filter((el) => el.description.toLowerCase().indexOf(text.toLowerCase()) != -1);
+		var total = 0;
+		items.forEach((el) => total += +el.total);
+		
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 15)),
             resultsCount: items.length,
             filteredItems: items,
-            searchQuery: text
+            searchQuery: text,
+			total: total
         })
     }
 	
@@ -211,13 +216,14 @@ class Outputs extends Component {
             resultsCount: this.state.responseData.length,
             filteredItems: this.state.responseData,
 			positionY: 0,
+			total: 0,
 			recordsCount: 15,
 			searchQuery: ''
 		});
 	}
 	
     render() {
-        let errorCtrl, loader, image;
+        let errorCtrl, loader, image, total;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -244,6 +250,12 @@ class Outputs extends Component {
 					marginTop: 10
 				}}
 			/>;
+		}
+		
+		if (this.state.total > 0) {
+			total = <Text>
+				  {"\u00a0"}({((+this.state.total).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}) 
+			</Text>;
 		}
 
         return (
@@ -340,6 +352,7 @@ class Outputs extends Component {
 				<View>
 					<Text style={styles.countFooter}>
 						{appConfig.language.records} {this.state.resultsCount.toString()} 
+						{total}
 					</Text>
 				</View>
             </View>
