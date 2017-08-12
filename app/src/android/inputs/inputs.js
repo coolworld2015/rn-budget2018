@@ -32,7 +32,8 @@ class Inputs extends Component {
             recordsCount: 15,
             positionY: 0,
 			searchQuery: '',
-			refreshing: false
+			refreshing: false,
+			total: 0
         };
     }
 	
@@ -63,7 +64,8 @@ class Inputs extends Component {
             resultsCount: 0,
             recordsCount: 15,
             positionY: 0,
-			searchQuery: ''
+			searchQuery: '',
+			total: 0
         });
 		
         fetch(appConfig.url + 'api/inputs/get', {			
@@ -170,14 +172,14 @@ class Inputs extends Component {
         var recordsCount = this.state.recordsCount;
         var positionY = this.state.positionY;
         var items = this.state.filteredItems.slice(0, recordsCount);
-
-        if (event.nativeEvent.contentOffset.y >= positionY) {
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(items),
-                recordsCount: recordsCount + 10,
-                positionY: positionY + 400
-            });
-        }
+		
+        this.setState({
+            dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 15)),
+            resultsCount: items.length,
+            filteredItems: items,
+            searchQuery: text,
+			total: total
+        })
     }
 
     onChangeText(text) {
@@ -187,11 +189,15 @@ class Inputs extends Component {
 
         var arr = [].concat(this.state.responseData);
         var items = arr.filter((el) => el.description.toLowerCase().indexOf(text.toLowerCase()) != -1);
+		var total = 0;
+		items.forEach((el) => total += +el.total);
+		
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 15)),
             resultsCount: items.length,
             filteredItems: items,
-            searchQuery: text
+            searchQuery: text,
+			total: total
         })
     }
 	
@@ -211,12 +217,13 @@ class Inputs extends Component {
             filteredItems: this.state.responseData,
 			positionY: 0,
 			recordsCount: 15,
-			searchQuery: ''
+			searchQuery: '',
+			total: 0
 		});
 	}
 	
     render() {
-        let errorCtrl, loader, image;
+        let errorCtrl, loader, image, total;
 
         if (this.state.serverError) {
             errorCtrl = <Text style={styles.error}>
@@ -244,7 +251,13 @@ class Inputs extends Component {
 				}}
 			/>;
 		}
-
+		
+		if (this.state.total > 0) {
+			total = <Text>
+				  {"\u00a0"}({((+this.state.total).toFixed(2)).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")}) 
+			</Text>;
+		}
+		
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -339,6 +352,7 @@ class Inputs extends Component {
 				<View>
 					<Text style={styles.countFooter}>
 						{appConfig.language.records} {this.state.resultsCount.toString()} 
+						{total}
 					</Text>
 				</View>
             </View>

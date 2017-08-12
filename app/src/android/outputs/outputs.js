@@ -64,7 +64,8 @@ class Outputs extends Component {
             resultsCount: 0,
             recordsCount: 15,
             positionY: 0,
-			searchQuery: ''
+			searchQuery: '',
+			total: 0
         });
 		
         fetch(appConfig.url + 'api/outputs/get', {			
@@ -146,7 +147,6 @@ class Outputs extends Component {
     }
 
     refreshData(event) {
-		console.log(event.nativeEvent.contentOffset);
         if (this.state.showProgress == true) {
             return;
         }
@@ -216,9 +216,9 @@ class Outputs extends Component {
             resultsCount: this.state.responseData.length,
             filteredItems: this.state.responseData,
 			positionY: 0,
-			total: 0,
 			recordsCount: 15,
-			searchQuery: ''
+			searchQuery: '',
+			total: 0
 		});
 	}
 	
