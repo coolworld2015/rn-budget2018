@@ -173,13 +173,13 @@ class Inputs extends Component {
         var positionY = this.state.positionY;
         var items = this.state.filteredItems.slice(0, recordsCount);
 		
-        this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(items.slice(0, 15)),
-            resultsCount: items.length,
-            filteredItems: items,
-            searchQuery: text,
-			total: total
-        })
+        if (event.nativeEvent.contentOffset.y >= positionY) {
+            this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(items),
+                recordsCount: recordsCount + 10,
+                positionY: positionY + 400
+            });
+        }
     }
 
     onChangeText(text) {
