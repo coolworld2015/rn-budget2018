@@ -51,7 +51,7 @@ class Search extends Component {
 			calendarDate: new Date(),
 			defaultDate: new Date(),
 			allDate: new Date(),
-			startText: '01/01/17',
+			startText: '01/01/18',
 			endText: todayDate,
 			simpleText: 'pick a date',
 			spinnerText: 'pick a date',
