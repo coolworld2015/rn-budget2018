@@ -95,6 +95,9 @@ class Search extends Component {
                 this.setState({
                     serverError: true
                 });
+				setTimeout(() => {
+					appConfig.onLogOut();
+				}, 1000);
             })
             .finally(()=> {
                 this.setState({
